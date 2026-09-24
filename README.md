@@ -97,7 +97,13 @@ pytest -q
 
 ## Run the synthetic end-to-end demo
 
-Create an XLSX containing the fields used by the demo, then run:
+Generate the synthetic XLSX first:
+
+~~~bash
+python scripts/create_demo_xlsx.py
+~~~
+
+Then run the browser workflow:
 
 ~~~bash
 python -m src.main --input sample_data/demo_clients.xlsx --fixture sample_data/intake_fixture.html
