@@ -1,0 +1,15 @@
+<!doctype html>
+<html><body>
+<form>
+<input data-testid="first-name"><input data-testid="last-name"><input data-testid="dob">
+<input data-testid="phone"><input data-testid="email"><input data-testid="address">
+<input data-testid="city"><input data-testid="state"><input data-testid="zip">
+<button type="button" data-testid="submit">Submit</button>
+<div data-testid="success" hidden>Submitted</div>
+</form>
+<script>
+document.querySelector('[data-testid="submit"]').addEventListener('click', () => {
+ document.querySelector('[data-testid="success"]').hidden = false;
+});
+</script>
+</body></html>
