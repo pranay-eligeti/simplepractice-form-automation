@@ -1,4 +1,4 @@
-# 📋 Spreadsheet-Driven Browser Automation
+# Spreadsheet-Driven Browser Automation
 
 > A sanitized, runnable Python + Playwright portfolio project demonstrating Excel-driven data mapping, browser form automation, validation, success verification, and structured logging.
 
@@ -48,7 +48,7 @@ submit + success verification
 structured logging
 ~~~
 
-See docs/architecture.md for design notes.
+See [architecture notes](docs/architecture.md) for design details.
 
 ## Repository structure
 
@@ -80,7 +80,7 @@ cd simplepractice-form-automation
 python -m venv .venv
 
 # Windows
-.venv\\Scripts\\activate
+.venv\Scripts\activate
 
 # macOS/Linux
 source .venv/bin/activate
@@ -110,6 +110,18 @@ python -m src.main --input sample_data/demo_clients.xlsx --fixture sample_data/i
 ~~~
 
 The public fixture does not connect to SimplePractice. It exercises the same engineering pattern against a local synthetic page.
+
+## Observable outcomes
+
+The CLI returns exit code **0** when every record succeeds and **1** when any record fails validation or browser execution. `logs/run.log` records the spreadsheet row and outcome:
+
+```text
+row=2 status=success
+row=3 status=validation_failed missing=['email']
+run_complete records=2 failures=1
+```
+
+This is an illustrative log excerpt; timestamps are added by the logger. Automated tests cover spreadsheet ingestion, normalization, and missing-field checks. The local browser demo separately exercises form filling, submission, and success verification. CI installs Chromium, but the current unit tests do not launch it.
 
 ## Design details
 
