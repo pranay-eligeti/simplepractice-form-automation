@@ -38,7 +38,8 @@ async def run(input_path: str, fixture_path: str) -> int:
                     logger.info("row=%s status=success", index)
                 except Exception as exc:
                     failures += 1
-                    logger.exception("row=%s status=browser_failed error=%s", index, exc)
+                    # Playwright exception text may contain submitted field values.
+                    logger.error("row=%s status=browser_failed type=%s", index, type(exc).__name__)
                 finally:
                     await page.close()
         finally:

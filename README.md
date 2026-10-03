@@ -121,7 +121,7 @@ row=3 status=validation_failed missing=['email']
 run_complete records=2 failures=1
 ```
 
-This is an illustrative log excerpt; timestamps are added by the logger. Automated tests cover spreadsheet ingestion, normalization, and missing-field checks. The local browser demo separately exercises form filling, submission, and success verification. CI installs Chromium, but the current unit tests do not launch it.
+This is an illustrative log excerpt; timestamps are added by the logger. Automated tests cover spreadsheet ingestion, header validation, required fields, local Chromium submission, and batch continuation after a failed row. CI runs the browser fixture. Browser failures log the exception type and row number without persisting submitted field values or raw Playwright errors.
 
 ## Design details
 
